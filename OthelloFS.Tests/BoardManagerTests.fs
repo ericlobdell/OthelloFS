@@ -39,23 +39,12 @@ type BoardManagerTests() =
         let gb = mgr.getNewBoard()
         let cellBeforeMove = Array2D.get gb.Cells 1 1
         cellBeforeMove.Player |> should equal 0
+        gb.Moves |> should equal 0
 
         let updatedBoard = mgr.recordMove 1 1 2 gb
         let cellWithMove = Array2D.get updatedBoard.Cells 1 1
         cellWithMove.Player |> should equal 2
-
-   [<Fact>]
-   let ``getScores should return a tuple with players scores``() =
-        let mgr = new GameboardManager()
-        let gb = mgr.getNewBoard()
-        let scores = mgr.getScores gb
-
-        scores |> should equal (2,2)
-
-        let updatedBoard = mgr.recordMove 1 1 2 gb
-        let scoresAfterMove = mgr.getScores gb
-
-        scoresAfterMove |> should equal (2,3)
+        updatedBoard.Moves |> should equal 1
 
    [<Fact>]
    let ``tryGetCell should return None for cell off gameboard``() =
@@ -75,6 +64,10 @@ type BoardManagerTests() =
         result.IsSome |> should be True 
         result.Value |> should equal actualCell
 
-
-
-
+   [<Fact>]
+   let ``getEmptyCells return a sequence of all the cells that don't belong to either player``() =
+        let mgr = new GameboardManager()
+        let gb = mgr.getNewBoard()
+        
+        mgr.getEmptyCells gb
+        |> Seq.forall (fun c -> c.Player = 0)

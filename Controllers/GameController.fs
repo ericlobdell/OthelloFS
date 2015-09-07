@@ -25,8 +25,9 @@ type GameController() =
     [<HttpPost>]
     member this.RecordMove(req: MoveRequest) =
         let mgr = new GameboardManager()
+        let sk = new ScoreKeeper(mgr)
         let updatedBoard = mgr.recordMove req.X req.Y req.Player req.Gameboard
-        let (p1,p2) = mgr.getScores updatedBoard
+        let (p1,p2) = sk.getScores updatedBoard
         { Player1Score = p1; 
           Player2Score = p2; 
           GameOver =false; 

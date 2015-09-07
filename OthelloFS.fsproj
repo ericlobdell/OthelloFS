@@ -127,10 +127,9 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
-    <Compile Include="Models\Car.fs" />
     <Compile Include="Models\Cell.fs" />
     <Compile Include="Models\BoardManager.fs" />
-    <Compile Include="Controllers\CarsController.fs" />
+    <Compile Include="Models\ScoreKeeper.fs" />
     <Compile Include="Controllers\GameController.fs" />
     <Content Include="Web.config" />
     <Compile Include="Startup.fs" />

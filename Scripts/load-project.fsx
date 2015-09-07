@@ -2,9 +2,8 @@
 #I __SOURCE_DIRECTORY__
 #load @"load-references.fsx"
 #load @"..\AssemblyInfo.fs"
-      @"..\Models\Car.fs"
       @"..\Models\Cell.fs"
       @"..\Models\BoardManager.fs"
-      @"..\Controllers\CarsController.fs"
+      @"..\Models\ScoreKeeper.fs"
       @"..\Controllers\GameController.fs"
       @"..\Startup.fs"
