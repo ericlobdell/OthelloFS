@@ -6,12 +6,9 @@ open System.Web.Http
 open OthelloFS.Models
 
 type MoveRequest = { X:int; Y:int; Player:int; Gameboard: GameBoard }
-type WinnerType =
-    | None
-    | Player1
-    | Player2
 
-type MoveResonse = { Player1Score:int; Player2Score:int; GameOver:bool; Winner:WinnerType; Gameboard:GameBoard  }
+
+type MoveResonse = { Player1Score:int; Player2Score:int; GameOver:bool; Winner:int; Gameboard:GameBoard  }
 
 /// Retrieves values.
 [<RoutePrefix("api")>]
@@ -33,5 +30,5 @@ type GameController() =
         { Player1Score = p1; 
           Player2Score = p2; 
           GameOver =false; 
-          Winner = WinnerType.None; 
+          Winner = int WinnerType.None; 
           Gameboard = updatedBoard  }
